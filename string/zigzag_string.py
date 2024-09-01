@@ -1,4 +1,4 @@
-def zigzag_string(string: str, rows_count: int) -> str:
+def zigzag_convertion(string: str, rows_count: int) -> str:
     if rows_count == 1:
         return string
 
@@ -22,4 +22,4 @@ def zigzag_string(string: str, rows_count: int) -> str:
     return zigzag
 
 
-print(zigzag_string("paypalishiring", 3))
+print(zigzag_convertion("paypalishiring", 3))
