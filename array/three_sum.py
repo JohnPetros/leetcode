@@ -2,7 +2,7 @@ def three_sum(numbers: list[int]) -> list[list[int]]:
     numbers.sort()
     sums = []
 
-    for start in range(len(numbers)):
+    for start in range(len(numbers) - 2):
         if numbers[start] > 0:
             break
 
