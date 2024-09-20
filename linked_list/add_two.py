@@ -1,6 +1,6 @@
 from typing import Optional
 
-from linked_list import LinkedList
+from _linked_list import LinkedList
 from node import Node
 
 
