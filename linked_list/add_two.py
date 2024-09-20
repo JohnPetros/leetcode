@@ -1,7 +1,7 @@
 from typing import Optional
 
 from _linked_list import LinkedList
-from node import Node
+from _node import Node
 
 
 def add_two(list_1_node: Optional[Node], list_2_node: Optional[Node]) -> Optional[Node]:
