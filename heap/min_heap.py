@@ -1,7 +1,8 @@
 from math import log
+import heapq
 
 
-class MaxHeap:
+class MinHeap:
     def __init__(self):
         self._nodes_count = 0
         self._heap = []
@@ -17,7 +18,7 @@ class MaxHeap:
                 break
 
             parent_node_index = node_index // 2
-            if self._heap[parent_node_index - 1] >= self._heap[node_index - 1]:
+            if self._heap[parent_node_index - 1] <= self._heap[node_index - 1]:
                 break
             else:
                 self._heap[parent_node_index - 1], self._heap[node_index - 1] = (
@@ -39,10 +40,10 @@ class MaxHeap:
                 break
 
             if node_index + 1 <= self._nodes_count:
-                if self._heap[node_index + 1 - 1] > self._heap[node_index - 1]:
+                if self._heap[node_index + 1 - 1] < self._heap[node_index - 1]:
                     node_index += 1
 
-            if self._heap[parent_node_index - 1] >= self._heap[node_index - 1]:
+            if self._heap[parent_node_index - 1] <= self._heap[node_index - 1]:
                 break
             else:
                 (
@@ -105,7 +106,7 @@ class MaxHeap:
         return self._nodes_count
 
 
-heap = MaxHeap()
+heap = MinHeap()
 heap.push(17)
 heap.push(36)
 heap.push(25)
@@ -118,5 +119,6 @@ heap.push(19)
 # heap.pop()
 
 print(heap)
-print(heap.left_child(2))
+# print(heap.peek())
+# print(heap.left_child(2))
 # print(heap.right_child(2))
