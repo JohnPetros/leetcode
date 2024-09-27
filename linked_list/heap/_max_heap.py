@@ -103,20 +103,3 @@ class MaxHeap:
 
     def __len__(self):
         return self._nodes_count
-
-
-heap = MaxHeap()
-heap.push(17)
-heap.push(36)
-heap.push(25)
-heap.push(7)
-heap.push(3)
-heap.push(100)
-heap.push(1)
-heap.push(2)
-heap.push(19)
-# heap.pop()
-
-print(heap)
-print(heap.left_child(2))
-# print(heap.right_child(2))
