@@ -1,4 +1,4 @@
-def remove_duplicates_from_sorted_array(numbers: list[int]):
+def remove_duplicates_from_sorted_array(numbers: list[int]) -> int:
     if not numbers:
         return 0
 
