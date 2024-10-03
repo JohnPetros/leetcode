@@ -28,6 +28,9 @@ class Stack:
 
         return self._top.value
 
+    def __bool__(self) -> bool:
+        return self._top is not None
+
     def __len__(self) -> int:
         return self._size
 
