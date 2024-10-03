@@ -134,3 +134,12 @@ class LinkedList:
 
     def __str__(self) -> str:
         return self.__repr__()
+
+
+head = LinkedList(1, 2, 3).head
+node1 = Node(4)
+node2 = Node(5)
+
+node1 = head.next
+head.next = 5
+print(node1)
