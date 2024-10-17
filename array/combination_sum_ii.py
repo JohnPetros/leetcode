@@ -1,4 +1,4 @@
-def combination_sum(candidates: list[int], target: int) -> int:
+def combination_sum_ii(candidates: list[int], target: int) -> int:
     valid_combinations = []
     candidates.sort()
 
@@ -10,18 +10,15 @@ def combination_sum(candidates: list[int], target: int) -> int:
         for index in range(start_index, len(candidates)):
             candidate = candidates[index]
 
-            if index > start_index and candidate == candidates[index - 1]:
-                continue
-
             if candidate > target:
                 continue
 
             combination.append(candidate)
-            backtrack(index + 1, target - candidate, combination)
+            backtrack(index, target - candidate, combination)
             combination.pop()
 
     backtrack(0, target, [])
     return valid_combinations
 
 
-print(combination_sum([2, 4, 5], 10))
+print(combination_sum_ii([2, 4, 5], 10))
