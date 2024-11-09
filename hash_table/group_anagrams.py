@@ -2,7 +2,7 @@ def group_anagrams(anagrams: list[str]) -> list[list[str]]:
     if not anagrams:
         return [[""]]
 
-    anagrams_table = {}
+    anagrams_table = dict()
 
     for anagram in anagrams:
         sorted_anagram = "".join(sorted(anagram))
