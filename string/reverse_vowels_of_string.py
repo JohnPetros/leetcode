@@ -1,11 +1,7 @@
 def reverse_vowels_of_string(string: str) -> str:
     vowels = "aeiou"
-    string_vowels = []
     letters = list(string)
-
-    for letter in letters:
-        if letter.lower() in vowels:
-            string_vowels.append(letter)
+    string_vowels = [letter for letter in letters if letter.lower() in vowels]
 
     index = 0
     while index < len(letters) and len(string_vowels) != 0:
