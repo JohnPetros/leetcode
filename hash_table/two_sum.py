@@ -1,13 +1,11 @@
 def two_sum(numbers, target):
-    complements = {}
+    hash_table = dict()
 
-    for index, number in enumerate(numbers):
-        complement = target - number
+    for index in range(len(numbers)):
+        if numbers[index] in hash_table:
+            return [hash_table[numbers[index]], index]
 
-        if complement in complements:
-            return [complements[complement], index]
-
-        complements[number] = index
+        hash_table[target - numbers[index]] = index
 
 
 print(two_sum([2, 7, 11, 15], 9))  # [0, 1]
