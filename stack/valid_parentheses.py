@@ -1,27 +1,22 @@
-from _stack import Stack
-
-
 def valid_parentheses(parentheses: str) -> bool:
-    stack = Stack()
-    open_brackets = ["(", "{", "["]
-    closed_brackets_map = {
-        ")": open_brackets[0],
-        "}": open_brackets[1],
-        "]": open_brackets[2],
+    parentheses_pairs = {
+        "(": ")",
+        "[": "]",
+        "{": "}",
     }
+    stack = []
 
-    for bracket in parentheses:
-        if bracket in open_brackets:
-            stack.push(bracket)
-            continue
-
-        if bracket in closed_brackets_map:
-            if not len(stack) or closed_brackets_map[bracket] != stack.pop():
+    for parenthese in parentheses:
+        if parenthese in parentheses_pairs:
+            stack.append(parenthese)
+        elif stack:
+            parenthese_pair = stack.pop()
+            if parenthese != parentheses_pairs[parenthese_pair]:
                 return False
-
+        else:
             return False
 
-    return not len(stack)
+    return not stack
 
 
 # print(valid_parentheses("()"))
