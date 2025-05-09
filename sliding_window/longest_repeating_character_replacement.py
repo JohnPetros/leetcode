@@ -16,3 +16,8 @@ def longest_repeating_character_replacement(string, k):
         longest_length = max(longest_length, length)
 
     return longest_length
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
+
+
+print(longest_repeating_character_replacement("AABABBA", 1))

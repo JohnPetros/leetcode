@@ -12,6 +12,8 @@ def longest_substring_without_repeating_characters(string):
         max_lenght = max(max_lenght, right_pointer - left_pointer + 1)
 
     return max_lenght
+    # Time Complexity: O(n)
+    # Space Complexity: O(n)
 
 
 print(longest_substring_without_repeating_characters("aabcab"))
