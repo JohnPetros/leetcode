@@ -9,6 +9,8 @@ def best_time_to_buy_and_sell_stock(stocks: list[int]) -> int:
             maximum_profit = max(maximum_profit, stock - minimum_price)
 
     return maximum_profit
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
 
 
 print(best_time_to_buy_and_sell_stock([7, 1, 5, 3, 6, 4]))

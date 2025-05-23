@@ -1,34 +1,42 @@
-from _node import Node
-from _linked_list import LinkedList
+from typing import Optional
 
 
-def merge_two_sorted_linked_lists(node_1: Node, node_2: Node) -> Node:
-    dummy = Node()
-    sorted_linked_list = dummy
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
-    while node_1 and node_2:
-        if node_1.value < node_2.value:
-            sorted_linked_list.next = node_1
-            sorted_linked_list = node_1
-            node_1 = node_1.next
+    def __str__(self) -> str:
+        return f"ListNode(val={self.val}, next={self.next})"
+
+
+def merge_two_sorted_lists(
+    list1: Optional[ListNode], list2: Optional[ListNode]
+) -> Optional[ListNode]:
+    dummy = ListNode()
+    sorted_list = dummy
+
+    while list1 and list2:
+        if list1.val < list2.val:
+            sorted_list.next = list1
+            sorted_list = list1
+            list1 = list1.next
         else:
-            sorted_linked_list.next = node_2
-            sorted_linked_list = node_2
-            node_2 = node_2.next
+            sorted_list.next = list2
+            sorted_list = list2
+            list2 = list2.next
 
-    if node_1:
-        sorted_linked_list.next = node_1
-    if node_2:
-        sorted_linked_list.next = node_2
+    if list1 is None:
+        sorted_list.next = list2
+    elif list2 is None:
+        sorted_list.next = list1
 
-    return dummy.next
+    return sorted_list.next
 
 
-linked_list_1 = LinkedList(1, 2, 4)
-linked_list_2 = LinkedList(1, 3, 4)
-
-print(merge_two_sorted_linked_lists(linked_list_1.head, linked_list_2.head))
-
-# linked_list_1 = LinkedList()
-# linked_list_2 = LinkedList()
-# print(merge_two_sorted_linked_lists(linked_list_1.head, linked_list_2.head))
+# print(
+#     mergeTwoLists(
+#         ListNode(1, ListNode(2, ListNode(4))), ListNode(1, ListNode(3, ListNode(5)))
+#     )
+# )
