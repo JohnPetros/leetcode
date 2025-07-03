@@ -13,6 +13,8 @@ def reverse_words_in_a_string_iii(string: str) -> str:
     reversed_string += " "
     reversed_string += string[left_pointer : right_pointer + 1][::-1]
     return reversed_string[1:]
+    # Time complexity: O(n)
+    # Space complexity: O(n)
 
 
 print(reverse_words_in_a_string_iii("Let's take LeetCode contest"))
