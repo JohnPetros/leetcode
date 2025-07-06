@@ -1,26 +1,22 @@
-from collections import Counter
+def contains_duplicate_ii(numbers, k):
+    window = set()
+    left_pointer = 0
 
-
-def maximum_length_substring_with_two_occurrences(string: str) -> int:
-    left_pointer, right_pointer = 0, 0
-    counter = Counter(string[0])
-    maximum_length = 1
-
-    while right_pointer < len(string) - 1:
-        right_pointer += 1
-        last_character = string[right_pointer]
-        counter[last_character] += 1
-
-        while counter[last_character] == 3:
-            first_character = string[left_pointer]
-            counter[first_character] -= 1
+    for right_pointer in range(len(numbers)):
+        if right_pointer - left_pointer > k:
+            window.remove(numbers[left_pointer])
             left_pointer += 1
 
-        maximum_length = max(maximum_length, right_pointer - left_pointer + 1)
+        if numbers[right_pointer] in window:
+            return True
 
-    return maximum_length
-    # Time Complexity: O(n)
-    # Space Complexity: O(1)
+        window.add(numbers[right_pointer])
+
+    return False
+    # Time complexity: O(n)
+    # Space complexity: O(n)
 
 
-print(maximum_length_substring_with_two_occurrences("bcbbbcba"))
+print(contains_duplicate_ii([1, 2, 3, 1], 3))  # True
+print(contains_duplicate_ii([1, 0, 1, 1], 1))  # True
+print(contains_duplicate_ii([1, 2, 3, 1, 2, 3], 2))  # False
