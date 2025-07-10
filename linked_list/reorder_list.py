@@ -28,7 +28,7 @@ def reorder_list(head):
         inverted_second_half_head = second_half_head
         second_half_head = temporary_head
 
-    # merge two halfs
+    # zip two halfs
     first_half_head, second_half_head = head, inverted_second_half_head
     while second_half_head:
         tmp1, tmp2 = first_half_head.next, second_half_head.next
@@ -37,6 +37,8 @@ def reorder_list(head):
         first_half_head, second_half_head = tmp1, tmp2
 
     return head
+    # O(n) time complexity
+    # O(1) space complexity
 
 
 print(reorder_list(ListNode(1, ListNode(2, ListNode(3, ListNode(4, None))))))

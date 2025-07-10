@@ -1,25 +1,36 @@
-from _linked_list import LinkedList
-from node import Node
+class ListNode:
+    def __init__(self, value=0, next=None):
+        self.value = value
+        self.next = next
+
+    def __str__(self) -> str:
+        current = self
+        nodes = []
+        while current:
+            nodes.append(str(current.value))
+            current = current.next
+        return " -> ".join(nodes)
 
 
-def remove_nth_node_from_end_of_list(head_node: Node, nth: int) -> Node:
-    dummy_node = Node()
-    dummy_node.next = head_node
-    behind_node = dummy_node
-    ahead_node = dummy_node
+def remove_nth_node_from_end_of_list(head: ListNode, nth: int) -> ListNode:
+    dummy_head = ListNode()
+    dummy_head.next = head
+    fast_head = dummy_head
+    slow_head = dummy_head
 
     for _ in range(nth + 1):
-        ahead_node = ahead_node.next
+        fast_head = fast_head.next
 
-    while ahead_node:
-        behind_node = behind_node.next
-        ahead_node = ahead_node.next
+    while fast_head is not None:
+        fast_head = fast_head.next
+        slow_head = slow_head.next
 
-    behind_node.next = behind_node.next.next
+    slow_head.next = slow_head.next.next
+    return dummy_head.next
+    # O(n) time complexity
+    # O(1) space complexity
 
-    return head_node
 
+head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
 
-list = LinkedList(0, 2, 4, 6, 8, 10)
-
-print(remove_nth_node_from_end_of_list(list.head, 3))
+print(remove_nth_node_from_end_of_list(head, 2))
