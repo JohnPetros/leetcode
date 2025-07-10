@@ -4,7 +4,12 @@ class ListNode:
         self.next = next
 
     def __str__(self) -> str:
-        return f"ListNode(val={self.val}, next={self.next})"
+        current = self
+        nodes = []
+        while current:
+            nodes.append(str(current.val))
+            current = current.next
+        return " -> ".join(nodes)
 
 
 def reorder_list(head):
