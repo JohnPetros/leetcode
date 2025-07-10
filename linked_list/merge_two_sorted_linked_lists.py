@@ -32,11 +32,11 @@ def merge_two_sorted_lists(
     elif list2 is None:
         sorted_list.next = list1
 
-    return sorted_list.next
+    return dummy.next
 
 
-# print(
-#     mergeTwoLists(
-#         ListNode(1, ListNode(2, ListNode(4))), ListNode(1, ListNode(3, ListNode(5)))
-#     )
-# )
+print(
+    merge_two_sorted_lists(
+        ListNode(1, ListNode(2, ListNode(4))), ListNode(1, ListNode(3, ListNode(5)))
+    )
+)

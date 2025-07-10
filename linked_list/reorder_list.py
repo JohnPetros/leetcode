@@ -8,38 +8,31 @@ class ListNode:
 
 
 def reorder_list(head):
-    if not head:
-        return
+    # find middle
+    slow_head, fast_head = head, head.next
+    while fast_head and fast_head.next:
+        slow_head = slow_head.next
+        fast_head = fast_head.next.next
 
-    slow = head
-    fast = head.next
+    # reverse second half
+    second_half_head = slow_head.next
+    inverted_second_half_head = slow_head.next = None
+    while second_half_head:
+        temporary_head = second_half_head.next
+        second_half_head.next = inverted_second_half_head
+        inverted_second_half_head = second_half_head
+        second_half_head = temporary_head
 
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-
-    second = slow
-    previous = None
-    while second:
-        temporary = second.next
-        second.next = previous
-        previous = second
-        second = temporary
-
-    first = head  # 1 -> 2 -> 3 -> 4 -> 5 -> None
-    second = previous  # 5 -> 4 -> 3 -> None
-
-    while second:
-        first_temporary = first.next  # 2 -> 3 -> 4 -> 5 -> None
-        second_temporary = second.next  # 4 -> 3 -> None
-
-        first.next = second  # 1 -> 5 -> 2
-        second.next = first_temporary  # 5 -> 2 -> 3
-
-        first = first_temporary  # 2
-        second = second_temporary  # 4
+    # merge two halfs
+    first_half_head, second_half_head = head, inverted_second_half_head
+    while second_half_head:
+        tmp1, tmp2 = first_half_head.next, second_half_head.next
+        first_half_head.next = second_half_head
+        second_half_head.next = tmp1
+        first_half_head, second_half_head = tmp1, tmp2
 
     return head
 
 
+print(reorder_list(ListNode(1, ListNode(2, ListNode(3, ListNode(4, None))))))
 print(reorder_list(ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))))
