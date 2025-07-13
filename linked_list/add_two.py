@@ -1,32 +1,40 @@
-from typing import Optional
+class ListNode:
+    def __init__(self, value=0, next=None):
+        self.value = value
+        self.next = next
 
-from _linked_list import LinkedList
-from _node import Node
+    def __str__(self) -> str:
+        current = self
+        nodes = []
+        while current:
+            nodes.append(str(current.value))
+            current = current.next
+        return " -> ".join(nodes)
 
 
-def add_two(list_1_node: Optional[Node], list_2_node: Optional[Node]) -> Optional[Node]:
-    head = Node(0)
-    pointer = head
-    exceed = 0
+def add_two_numbers(head_1, head_2):
+    dummy = ListNode()
+    head = dummy
+    carry = 0
 
-    while list_1_node or list_2_node or exceed:
-        value_1 = list_1_node.value if list_1_node else 0
-        value_2 = list_2_node.value if list_2_node else 0
+    while head_1 or head_2 or carry:
+        value_1 = head_1.value if head_1 else 0
+        value_2 = head_2.value if head_2 else 0
 
-        sum = value_1 + value_2 + exceed
+        sum = value_1 + value_2 + carry
         digit = sum % 10
-        exceed = sum // 10
+        carry = sum // 10
 
-        pointer.next = Node(digit)
-        pointer = pointer.next
+        head.next = ListNode(digit)
+        head = head.next
 
-        list_1_node = list_1_node.next if list_1_node else None
-        list_2_node = list_2_node.next if list_2_node else None
+        head_1 = head_1.next if head_1 else None
+        head_2 = head_2.next if head_2 else None
 
-    return head.next
+    return dummy.next
 
 
-list_1 = LinkedList(2, 4, 3)
-list_2 = LinkedList(5, 6, 4)
+head_1 = ListNode(2, ListNode(4, ListNode(3)))
+head_2 = ListNode(5, ListNode(6, ListNode(4)))
 
-print(add_two(list_1.head, list_2.head))
+print(add_two_numbers(head_1, head_2))
