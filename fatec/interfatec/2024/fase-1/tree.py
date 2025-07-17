@@ -71,18 +71,24 @@ class BinaryTree:
         return right_height + 1
 
     def insert(self, value):
-        self.root = self._insert(self.root, value)
+        new_node = Node(value)
+        if self.root is None:
+            self.root = new_node
+            return
 
-    def _insert(self, node, value):
-        if node is None:
-            return Node(value)
-
-        if node.left is None:
-            node.left = Node(value)
-        else:
-            node.right = self._insert(node.right, value)
-
-        return node
+        queue = [self.root]
+        while queue:
+            current = queue.pop(0)
+            if current.left is None:
+                current.left = new_node
+                return
+            else:
+                queue.append(current.left)
+            if current.right is None:
+                current.right = new_node
+                return
+            else:
+                queue.append(current.right)
 
     def insert_many(self, values):
         for value in values:
