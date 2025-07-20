@@ -1,10 +1,15 @@
 def fibonacci_number(n: int) -> int:
-    memo = {0: 0, 1: 1}
+    if n == 0 and n == 1:
+        return n
 
-    if n not in memo:
-        memo[n] = fibonacci_number(n - 2) + fibonacci_number(n - 1)
+    dp = [0] * (n + 1)
+    dp[0] = 0
+    dp[1] = 1
 
-    return memo[n]
+    for index in (2, n + 1):
+        dp[index] = dp[index - 2] + dp[index - 1]
+
+    return dp[n]
 
 
 print(fibonacci_number(6))
