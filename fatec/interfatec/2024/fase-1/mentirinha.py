@@ -1,8 +1,3 @@
-# number = int(input())
-
-# integer = 7
-# integer = 4
-# integer = 994009
 integer = 999983
 counter = 0
 for number in range(1, integer + 1):
