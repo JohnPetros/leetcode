@@ -29,5 +29,5 @@ número primo!
 
 - Par + Par = Par
 - Ímpar + Ímpar = Par
-- Par + Ímpar = Ímpar
+- Par + Ímpar = Par
 - Ímpar + Par = Ímpar
