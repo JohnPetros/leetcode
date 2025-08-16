@@ -62,6 +62,8 @@ end = (2 - 1, 10 - 1)  # (1, 9)
 
 shortest_path = bfs_shortest_path_in_maze(maze, start, end)
 
+print(shortest_path)
+
 if shortest_path:
     print("Caminho mais curto encontrado:")
     for row, column in shortest_path:

@@ -71,5 +71,6 @@ end_node = 7
 
 path, total_distance = dijkstra(graph, 0, 7)
 
-# Imprime o resultado no formato esperado
+print(path, total_distance)
+
 print(" ".join(map(str, path)))

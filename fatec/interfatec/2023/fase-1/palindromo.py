@@ -1,5 +1,15 @@
 from sys import stdin
 from unicodedata import normalize, category
+from string import (
+    punctuation,
+    ascii_letters,
+    ascii_lowercase,
+    ascii_uppercase,
+    digits,
+    capwords,
+)
+
+print(capwords("olá mundo, ação e coração".index))
 
 # try:
 #     for string in stdin.readlines():
