@@ -57,35 +57,39 @@ class BinaryTree:
 
         print(node, end=" ")
 
-    def get_height(self, node=None):
+    def get_node_height(self, node=None):
         if node is None:
-            node = self.root
+            return -1
 
-        left_height = 0
-        right_height = 0
+        left_height = self.get_node_height(node.left)
+        right_height = self.get_node_height(node.right)
 
-        if node.left:
-            left_height = self.get_height(node.left)
-        if node.right:
-            right_height = self.get_height(node.right)
-
-        if left_height > right_height:
-            return left_height + 1
-        return right_height + 1
+        return 1 + max(left_height, right_height)
 
     def insert(self, value):
-        self.root = self._insert(self.root, value)
+        self._insert(self.root, value)
 
     def _insert(self, node, value):
-        if node is None:
-            return Node(value)
+        if self.root is None:
+            self.root = Node(value)
+            return
 
-        if node.left is None:
-            node.left = Node(value)
-        else:
-            node.right = self._insert(node.right, value)
+        queue = deque([self.root])
 
-        return node
+        while queue:
+            node = queue.popleft()
+
+            if node.left is None:
+                node.left = Node(value)
+                return
+            else:
+                queue.append(node.left)
+
+            if node.right is None:
+                node.right = Node(value)
+                return
+            else:
+                queue.append(node.right)
 
     def insert_many(self, values):
         for value in values:
@@ -179,4 +183,4 @@ class BinaryTree:
             preorder_string(node.right)
 
         preorder_string(self.root)
-        return " -> ".join(result)
+        return f"[{', '.join(result)}]"

@@ -31,22 +31,22 @@ class TreeNode:
 
         return result
 
+    @staticmethod
+    def create(values):
+        if not values or values[0] is None:
+            return None
 
-def build_tree(values):
-    if not values or values[0] is None:
-        return None
+        nodes = [TreeNode(val) if val is not None else None for val in values]
+        children = nodes[::-1]
+        root = children.pop()
 
-    nodes = [TreeNode(val) if val is not None else None for val in values]
-    children = nodes[::-1]
-    root = children.pop()
-
-    for node in nodes:
-        if node:
-            if children:
-                node.left = children.pop()
-            if children:
-                node.right = children.pop()
-    return root
+        for node in nodes:
+            if node:
+                if children:
+                    node.left = children.pop()
+                if children:
+                    node.right = children.pop()
+        return root
 
 
 def binary_tree_inorder_traversal(root: TreeNode) -> list[int]:
@@ -63,6 +63,6 @@ def binary_tree_inorder_traversal(root: TreeNode) -> list[int]:
     return nodes
 
 
-tree = build_tree([1, None, 2, 3])
+tree = TreeNode.create([1, None, 2, 3])
 
 print(binary_tree_inorder_traversal(tree))
