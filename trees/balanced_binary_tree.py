@@ -4,16 +4,18 @@ from binary_tree import BinaryTree, Node
 def balanced_binary_tree(root: Node):
     is_balanced = [True]
 
-    def traversal(node: Node):
+    def height(node):
         if node is None:
             return 0
 
-        left_height = traversal(node.left)
+        left_height = height(node.left)
 
-        if is_balanced[0] is False:
+        if not is_balanced[0]:
             return 0
 
-        right_height = traversal(node.right)
+        right_height = height(node.right)
+
+        print(left_height, right_height)
 
         if abs(left_height - right_height) > 1:
             is_balanced[0] = False
@@ -21,14 +23,14 @@ def balanced_binary_tree(root: Node):
 
         return 1 + max(left_height, right_height)
 
-    traversal(root)
+    height(root)
 
-    return is_balanced
+    return is_balanced[0]
     # Time Complexity: O(n)
     # Space Complexity: O(h)
 
 
 tree = BinaryTree()
-tree.insert_many([1, 2, 2, 3, 3, None, None, 4, 4])
+tree.insert_many([1, 2, 3, None, None, 4, None, 5])
 
 print(balanced_binary_tree(tree.root))

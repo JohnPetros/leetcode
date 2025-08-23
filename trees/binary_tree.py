@@ -92,8 +92,31 @@ class BinaryTree:
                 queue.append(node.right)
 
     def insert_many(self, values):
-        for value in values:
-            self.insert(value)
+        if not values:
+            return
+
+        nodes = [Node(v) if v is not None else None for v in values]
+
+        self.root = nodes[0]
+        queue = deque([self.root])
+        i = 1
+
+        while queue and i < len(nodes):
+            node = queue.popleft()
+            if node is None:
+                continue
+
+            # Filho esquerdo
+            if i < len(nodes):
+                node.left = nodes[i]
+                queue.append(node.left)
+                i += 1
+
+            # Filho direito
+            if i < len(nodes):
+                node.right = nodes[i]
+                queue.append(node.right)
+                i += 1
 
     # --- NOVA IMPLEMENTAÇÃO DO MÉTODO ---
     def insert_at(self, value, target_index):
