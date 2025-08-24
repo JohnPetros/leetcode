@@ -118,13 +118,7 @@ class BinaryTree:
                 queue.append(node.right)
                 i += 1
 
-    # --- NOVA IMPLEMENTAÇÃO DO MÉTODO ---
     def insert_at(self, value, target_index):
-        """
-        Insere um nó com 'value' no 'target_index' da árvore, se o espaço estiver vazio.
-        A indexação é por nível (largura), começando com a raiz no índice 0.
-        Retorna True se a inserção for bem-sucedida, False caso contrário.
-        """
         new_node = Node(value)
 
         # Caso 1: Inserindo a raiz (índice 0)
