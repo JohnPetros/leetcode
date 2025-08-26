@@ -1,5 +1,6 @@
 from binary_tree import BinaryTree, Node
 
+
 #        '+'
 #       /   \
 #     'a'    '*'
@@ -10,6 +11,7 @@ from binary_tree import BinaryTree, Node
 #            /   \
 #          'c'   'd'
 # (a + (b * ((c/d) - e)))
+
 
 tree = BinaryTree()
 n1 = Node("a")
