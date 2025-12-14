@@ -17,6 +17,8 @@ def best_time_to_buy_and_sell_stock_ii(prices: list[int]):
         profit += higher_point - lower_point
 
     return profit
+    # Time: O(n)
+    # Space: O(1)
 
 
 print(best_time_to_buy_and_sell_stock_ii([7, 6, 4, 1, 5, 8, 3, 6, 4]))

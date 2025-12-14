@@ -15,6 +15,8 @@ def merge_sorted_array(numbers1: list[int], m, numbers2: list[int], n):
             y -= 1
 
     return numbers1
+    # Time: O(n)
+    # Space: O(1)
 
 
 # print(merge_sorted_array([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3))
