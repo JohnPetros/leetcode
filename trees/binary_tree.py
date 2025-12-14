@@ -191,13 +191,15 @@ class BinaryTree:
             return "Empty tree"
 
         result = []
-
-        def preorder_string(node):
-            if node is None:
-                return
-            result.append(str(node))
-            preorder_string(node.left)
-            preorder_string(node.right)
-
-        preorder_string(self.root)
+        queue = deque([self.root])
+        while queue:
+            node = queue.popleft()
+            if node is not None:
+                result.append(str(node))
+                queue.append(node.left)
+                queue.append(node.right)
+            else:
+                result.append("None")
+        while result and result[-1] == "None":
+            result.pop()
         return f"[{', '.join(result)}]"
