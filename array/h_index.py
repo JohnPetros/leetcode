@@ -13,7 +13,6 @@ def h_index(citations: list[int]) -> int:
     while max_paper_count < h:
         h -= 1
         max_paper_count += paper_counts[h]
-        print(max_paper_count, h)
 
     return h
     # Time: O(n)
