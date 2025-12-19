@@ -17,5 +17,4 @@ def gas_station(gas: list[int], cost: list[int]) -> int:
 
     return start
 
-
 print(gas_station([1, 2, 3, 4, 5], [3, 4, 5, 1, 2]))
