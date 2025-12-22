@@ -24,6 +24,6 @@ def move_zeroes(nums: list[int]) -> list[int]:
     # Space: O(1)
 
 
-print(move_zeroes([0, 1, 0, 3, 12]))
+# print(move_zeroes([0, 1, 0, 3, 12]))
 # print(move_zeroes([0]))
 # print(move_zeroes([4, 2, 4, 0, 0, 3, 0, 5, 1, 0]))
