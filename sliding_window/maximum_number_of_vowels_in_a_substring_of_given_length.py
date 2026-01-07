@@ -15,6 +15,8 @@ def maximum_number_of_vowels_in_a_substring_of_given_length(s: str, k: int) -> i
             maximum = count
 
     return maximum
+    # Time: O(N)
+    # Space: O(1)
 
 
 print(maximum_number_of_vowels_in_a_substring_of_given_length("aeiou", 2))
