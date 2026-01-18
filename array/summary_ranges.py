@@ -24,4 +24,4 @@ def summary_ranges(nums: list[int]) -> list[int]:
 
 # print(summary_ranges([0, 1, 2, 4, 5, 7]))
 # print(summary_ranges([0, 2, 3, 4, 6, 8, 9]))
-print(summary_ranges([0, 0, 0, 0]))
+# print(summary_ranges([0, 0, 0, 0]))
