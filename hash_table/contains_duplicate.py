@@ -1,4 +1,4 @@
-def contains_duplicate(numbers: list[int]) -> list[int]:
+def contains_duplicate(numbers: list[int]) -> bool:
     memory = set()
 
     for number in numbers:
