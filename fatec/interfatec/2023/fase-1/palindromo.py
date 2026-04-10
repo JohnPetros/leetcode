@@ -34,9 +34,7 @@ print(capwords("olá mundo, ação e coração".index))
 
 
 def remove_accentuation(string):
-    return "".join(
-        char for char in normalize("NFD", string) if category(char) != "Mn"
-    ).replace(" ", "")
+    return "".join(char for char in normalize("NFD", string) if category(char) != "Mn")
 
 
 string = "4r4R4"
