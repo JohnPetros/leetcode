@@ -1,21 +1,29 @@
 TESTE = True
 
 
-def knapsack_01(values, weights, capacity):
-    dp = [0] * (capacity + 1)
+def knapsack_unbounded(values, weights, capacity):
+    dp_profit = [0] * (capacity + 1)
+    dp_purses = [0] * (capacity + 1)
     for i in range(len(values)):
-        for w in range(capacity, weights[i] - 1, -1):
-            dp[w] = max(dp[w], dp[w - weights[i]] + values[i])
-    return dp
+        for w in range(weights[i], capacity + 1):
+            new_profit = dp_profit[w - weights[i]] + values[i]
+            new_purses = dp_purses[w - weights[i]] + 1
+
+            if new_profit > dp_profit[w]:
+                dp_profit[w] = new_profit
+                dp_purses[w] = new_purses
+
+    return dp_profit, dp_purses
 
 
 def bolsa(c: int, p: int, purses: list[tuple[int, int]]):
-    result = knapsack_01(
+    dp_profit, dp_purses = knapsack_unbounded(
         values=[purse[1] for purse in purses],
         weights=[purse[0] for purse in purses],
         capacity=c,
     )
-    print(result)
+    print(dp_profit)
+    print(dp_purses)
 
 
 if TESTE:
